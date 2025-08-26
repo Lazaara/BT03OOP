@@ -19,6 +19,30 @@ namespace BT03OOP
             {
                 int randIndex = random.Next(0, points.Count);
                 Point randPoint = points[randIndex];
+
+                if (points.Contains(randPoint))
+                {
+                    i--;
+                    continue;
+                }
+
+                if (i == 2)
+                {
+                    Point p1 = randomPoints[0];
+                    Point p2 = randomPoints[1];
+
+                    if ((p1.GetX() == p2.GetX() && randPoint.GetX() == p1.GetX() || randPoint.GetX() == p2.GetX())
+                        ||
+                        (p1.GetY() == p2.GetY() && randPoint.GetY() == p1.GetY() || randPoint.GetY() == p2.GetY())
+                        ||
+                        (p1.GetZ() == p2.GetZ() && randPoint.GetZ() == p1.GetZ() || randPoint.GetZ() == p2.GetZ()))
+                    {
+                        i--;
+                        continue;
+                    }
+
+                }
+                
                 randomPoints.Add(randPoint);
             }
 
