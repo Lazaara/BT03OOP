@@ -101,9 +101,6 @@ namespace BT03OOP.Properties
             double BC = B.GetDistanceTo(C);
             double CA = C.GetDistanceTo(A);
             
-            if (AB == 0 || BC == 0 || CA == 0) 
-                throw new InvalidOperationException("Co hai hay nhieu diem trung nhau");
-            
             double gA = Math.Acos((AB*AB + CA*CA - BC*BC) / (2 * AB * CA)) * 180 / Math.PI;
             double gB = Math.Acos((AB*AB + BC*BC - CA*CA) / (2 * AB * BC)) * 180 / Math.PI;
             double gC = 180 - gA - gB;

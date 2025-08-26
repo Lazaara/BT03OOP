@@ -20,7 +20,7 @@ namespace BT03OOP
                 int randIndex = random.Next(0, points.Count);
                 Point randPoint = points[randIndex];
 
-                if (points.Contains(randPoint))
+                if (randomPoints.Contains(randPoint))
                 {
                     i--;
                     continue;
@@ -30,12 +30,18 @@ namespace BT03OOP
                 {
                     Point p1 = randomPoints[0];
                     Point p2 = randomPoints[1];
+                    Point tempP3 = randPoint;
 
-                    if ((p1.GetX() == p2.GetX() && randPoint.GetX() == p1.GetX() || randPoint.GetX() == p2.GetX())
-                        ||
-                        (p1.GetY() == p2.GetY() && randPoint.GetY() == p1.GetY() || randPoint.GetY() == p2.GetY())
-                        ||
-                        (p1.GetZ() == p2.GetZ() && randPoint.GetZ() == p1.GetZ() || randPoint.GetZ() == p2.GetZ()))
+                    double ab = p1.GetDistanceTo(p2);
+                    double bc = p2.GetDistanceTo(tempP3);
+                    double ca = tempP3.GetDistanceTo(p1);
+                    
+                    //Canh dai nhat
+                    double longest = Math.Max(ab, Math.Max(bc, ca));
+                    //Tong cac canh con lai
+                    double sumOthers = ab + bc + ca - longest;
+
+                    if (Math.Abs(longest - sumOthers) < 1e-9)
                     {
                         i--;
                         continue;
